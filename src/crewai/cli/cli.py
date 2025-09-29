@@ -106,7 +106,7 @@ def version(tools):
 
     if tools:
         try:
-            tools_version = get_version("crewai")
+            tools_version = get_version("crewai-tools")
             click.echo(f"crewai tools version: {tools_version}")
         except Exception:
             click.echo("crewai tools not installed")
@@ -307,7 +307,7 @@ def deploy_push(uuid: str | None):
 
 @deploy.command(name="status")
 @click.option("-u", "--uuid", type=str, help="Crew UUID parameter")
-def deply_status(uuid: str | None):
+def deploy_status(uuid: str | None):
     """Get the status of a deployment."""
     deploy_cmd = DeployCommand()
     deploy_cmd.get_crew_status(uuid=uuid)
