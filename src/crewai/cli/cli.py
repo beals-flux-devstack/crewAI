@@ -253,13 +253,13 @@ def test(n_iterations: int, model: str):
 )
 @click.pass_context
 def install(context):
-    """Install the Crew."""
+    """Install crew dependencies and set up the project environment."""
     install_crew(context.args)
 
 
 @crewai.command()
 def run():
-    """Run the Crew."""
+    """Execute the crew and start the agent workflow."""
     run_crew()
 
 
