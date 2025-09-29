@@ -83,7 +83,7 @@ def uv(uv_args):
 @click.option("--provider", type=str, help="The provider to use for the crew")
 @click.option("--skip_provider", is_flag=True, help="Skip provider validation")
 def create(type, name, provider, skip_provider=False):
-    """Create a new crew, or flow."""
+    """Create a new crew or flow."""
     if type == "crew":
         create_crew(name, provider, skip_provider)
     elif type == "flow":
@@ -128,7 +128,7 @@ def version(tools):
     help="Path to a custom file for training",
 )
 def train(n_iterations: int, filename: str):
-    """Train the crew."""
+    """Train the Crew."""
     click.echo(f"Training the Crew for {n_iterations} iterations")
     train_crew(n_iterations, filename)
 
@@ -200,7 +200,7 @@ def reset_memories(
     all: bool,
 ) -> None:
     """
-    Reset the crew memories (long, short, entity, latest_crew_kickoff_ouputs, knowledge, agent_knowledge). This will delete all the data saved.
+    Reset the Crew memories (long, short, entity, latest_crew_kickoff_outputs, knowledge, agent_knowledge). This will delete all the data saved.
     """
     try:
         memory_types = [
@@ -240,7 +240,7 @@ def reset_memories(
     help="LLM Model to run the tests on the Crew. For now only accepting only OpenAI models.",
 )
 def test(n_iterations: int, model: str):
-    """Test the crew and evaluate the results."""
+    """Test the Crew and evaluate the results."""
     click.echo(f"Testing the crew for {n_iterations} iterations with model {model}")
     evaluate_crew(n_iterations, model)
 
@@ -253,13 +253,13 @@ def test(n_iterations: int, model: str):
 )
 @click.pass_context
 def install(context):
-    """Install crew dependencies and set up the project environment."""
+    """Install Crew dependencies and set up the project environment."""
     install_crew(context.args)
 
 
 @crewai.command()
 def run():
-    """Execute the crew and start the agent workflow."""
+    """Execute the Crew and start the agent workflow."""
     run_crew()
 
 
