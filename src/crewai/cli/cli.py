@@ -26,6 +26,7 @@ from .plot_flow import plot_flow
 from .replay_from_task import replay_task_command
 from .reset_memories_command import reset_memories_command
 from .run_crew import run_crew
+from .test_crew import test_crew_framework
 from .tools.main import ToolCommand
 from .train_crew import train_crew
 from .update_crew import update_crew
@@ -243,6 +244,56 @@ def test(n_iterations: int, model: str):
     """Test the Crew and evaluate the results."""
     click.echo(f"Testing the crew for {n_iterations} iterations with model {model}")
     evaluate_crew(n_iterations, model)
+
+
+@crewai.command()
+@click.option(
+    "-d",
+    "--test-dir",
+    type=str,
+    default="tests",
+    help="Directory containing test files",
+)
+@click.option(
+    "-p",
+    "--pattern",
+    type=str,
+    default="test_*.py",
+    help="Pattern for test file names",
+)
+@click.option(
+    "-v",
+    "--verbosity",
+    type=int,
+    default=2,
+    help="Output verbosity level (0-2)",
+)
+@click.option(
+    "--report",
+    is_flag=True,
+    help="Generate HTML test report",
+)
+@click.option(
+    "--report-file",
+    type=str,
+    default="crewai_test_report.html",
+    help="HTML report file path",
+)
+def test_framework(
+    test_dir: str,
+    pattern: str,
+    verbosity: int,
+    report: bool,
+    report_file: str,
+):
+    """Run the CrewAI testing framework for agent and crew tests."""
+    test_crew_framework(
+        test_dir=test_dir,
+        pattern=pattern,
+        verbosity=verbosity,
+        report=report,
+        report_file=report_file,
+    )
 
 
 @crewai.command(
