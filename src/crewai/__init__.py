@@ -84,4 +84,5 @@ __all__ = [
     "Task",
     "TaskOutput",
     "__version__",
+    # Testing framework is available as crewai.testing
 ]
